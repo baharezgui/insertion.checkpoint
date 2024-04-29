@@ -1,0 +1,31 @@
+PROCEDURE insertion_sort(VAR tab: ARRAY OF INTEGER)
+VAR
+    i, j, key: INTEGER;
+BEGIN
+    FOR j FROM 1 TO Length(tab) - 1 DO
+        key := tab[j];
+        i := j - 1;
+        WHILE (i >= 0 AND tab[i] > key) DO
+            tab[i + 1] := tab[i];
+            i := i - 1;
+        END_WHILE
+        tab[i + 1] := key;
+    END_FOR
+END
+
+ALGORITHM sort_table
+VAR
+    card: ARRAY [0..14] OF INTEGER;
+    i: INTEGER;
+BEGIN
+    FOR i FROM 0 TO 14 DO
+        Write("Give the value of index ", i, ": ");
+        Read(card[i]);
+    END_FOR
+
+    insertion_sort(card);
+
+    FOR i FROM 0 TO 14 DO
+        Write(card[i], " ");
+    END_FOR
+END
